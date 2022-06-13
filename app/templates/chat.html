@@ -39,9 +39,10 @@
     }
 </script>
 
-<h1>Chat, Room: {{ room }}</h1>
-<textarea id="chat" cols="80" rows="20"></textarea><br><br>
-<input id="text" size="80" placeholder="Enter your message here"><br><br>
-<a href="#" onclick="leave_room();">Leave this room</a>
-
+<div class="row col-md-4 p-3">
+    <h3>Chat, Room: {{ room }}</h3>
+    <textarea class="form-control bg-white" disabled id="chat" rows="10"></textarea><br><br>
+    <input id="text" size="80" placeholder="Enter your message here"><br><br>
+    <a href="#" onclick="leave_room();">Leave this room</a>
+</div>
 {% endblock content %}
