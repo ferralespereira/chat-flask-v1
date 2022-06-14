@@ -15,9 +15,9 @@ def index():
         if 'users' not in session:
             session['users'] = [form.name.data]
         else:
-            user_list = session['users']
-            user_list.append(form.name.data)
-            session['users'] = user_list
+            list_users = session['users']
+            list_users.append(form.name.data)
+            session['users'] = list_users
 
         print(session)
         return redirect(url_for('.chat'))
