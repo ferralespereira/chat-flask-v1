@@ -2,8 +2,6 @@
 {% block title %}Room {{room}}{% endblock title %}
 
 {% block content %}
-{# socketIO #}
-<script type="text/javascript" src="//cdn.socket.io/4.4.1/socket.io.min.js"></script>
 
 <div class="row col-md-4 p-3">
     <h4>{{name}}</h4>
@@ -12,6 +10,9 @@
     <input id="text" size="80" onkeypress="sendText(event)" placeholder="Enter your message here"><br><br>
     <a href="/" onclick="leave_room();">Leave this room</a>
 </div>
+    
+{# socketIO #}
+<script type="text/javascript" src="//cdn.socket.io/4.4.1/socket.io.min.js"></script>
 
 <script type="text/javascript" src="{{ url_for('static', filename = 'js/chat.js') }}"></script>
 
