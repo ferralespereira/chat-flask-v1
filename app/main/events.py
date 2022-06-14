@@ -2,6 +2,12 @@ from flask import session
 from flask_socketio import emit, join_room, leave_room
 from .. import socketio
 
+@socketio.on('get users', namespace='/')
+def getUsers():
+    emit('show users', {
+        'msg':' test response anana.',
+        'list_users': session.get('users')
+        })
 
 @socketio.on('joined', namespace='/chat')
 def joined(message):
