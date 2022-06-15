@@ -13,6 +13,5 @@ socket.on('get user list', function(data:any){
         if (user){
             users.innerHTML += '<button type="button" class="btn btn-primary rounded-5 m-1">'+user+'</button>';
         }
-
     }
 });
