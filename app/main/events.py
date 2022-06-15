@@ -5,7 +5,6 @@ from .. import socketio
 list_users = []
 
 @socketio.on('get user list', namespace='/')
-@socketio.on('get user list', namespace='/chat')
 def sendMyUserName():
     emit('get user list', {
                     'msg': 'jaaj',
@@ -20,14 +19,13 @@ def joined(message):
     room = session.get('room')
     join_room(room)
 
-    # if user do not exists in the lis, i add it
+    # if user do not exists in the list, i add it
     exists = session['name'] in list_users
     if not exists:
         list_users.append(session['name'])
 
     emit('status', {
-                    'msg':        session.get('name') + ' has entered the room.',
-                    'list_users': list_users
+                    'msg':session.get('name') + ' has entered the room.'
                     }, room=room)
 
 
