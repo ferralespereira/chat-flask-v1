@@ -48,11 +48,6 @@ def left(message):
 
     # when i leave_room remove the user from list_user
     list_users.remove(session['name'])
-
-    # remove this user from session['users']
-    # session['users']=NULL
-    # session.pop('users', None)  
-    # print(session)
     
     emit('status', {'msg': session.get('name') + ' has left the room.'}, room=room)
 
