@@ -4,7 +4,7 @@ from .. import socketio
 
 list_users = []
 
-@socketio.on('get user list', namespace='/')
+@socketio.on('get user list')
 def getUserList():
     emit('get user list', {
                     'msg': 'jaaj',
