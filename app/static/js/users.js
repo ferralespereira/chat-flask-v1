@@ -1,4 +1,4 @@
-var socket = io.connect('http://' + document.domain + ':' + location.port + (window.location.pathname));
+var socket = io.connect('http://' + document.domain + ':' + location.port);
 // when i enter or refresh the page, i'll get all users that are connected
 socket.emit('get user list');
 socket.on('get user list', function (data) {

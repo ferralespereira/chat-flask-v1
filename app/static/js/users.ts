@@ -1,4 +1,4 @@
-let socket:any = io.connect('http://' + document.domain + ':' + location.port + (window.location.pathname) );
+let socket:any = io.connect('http://' + document.domain + ':' + location.port);
 
 // when i enter or refresh the page, i'll get all users that are connected
 socket.emit('get user list');
