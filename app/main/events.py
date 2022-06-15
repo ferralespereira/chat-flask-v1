@@ -2,18 +2,15 @@ from flask import session
 from flask_socketio import emit, join_room, leave_room
 from .. import socketio
 
-@socketio.on('user connected', namespace='/')
-def userConnected():
-    emit('user connected', {
-                            'msg':' send me your user name.'
-                            }, broadcast=True, include_self=False)
+list_users = []
 
-@socketio.on('send my user name', namespace='/')
+@socketio.on('get user list', namespace='/')
+@socketio.on('get user list', namespace='/chat')
 def sendMyUserName():
-    emit('send my user name', {
-                    'user': session['name']
-                    },broadcast=True, include_self=False)
-
+    emit('get user list', {
+                    'msg': 'jaaj',
+                    'list_users': list_users
+                    },broadcast=True)
 
 
 @socketio.on('joined', namespace='/chat')
@@ -22,9 +19,12 @@ def joined(message):
     A status message is broadcast to all people in the room."""
     room = session.get('room')
     join_room(room)
+
+    list_users.append(session['name'])
+
     emit('status', {
                     'msg':        session.get('name') + ' has entered the room.',
-                    'list_users': session.get('users')
+                    'list_users': list_users
                     }, room=room)
 
 
