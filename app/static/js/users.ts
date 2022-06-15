@@ -7,9 +7,12 @@ socket.on('get user list', function(data:any){
 
     let users:any = document.getElementById('users');
 
-    users.innerHTML = '<button type="button" class="btn btn-primary rounded-5 m-1">'+data.user+'</button>';
+    users.innerHTML = 'Users connected: <br>';
 
     for (let user of data.list_users) {
-        users.innerHTML += '<button type="button" class="btn btn-primary rounded-5 m-1">'+user+'</button>';
+        if (user){
+            users.innerHTML += '<button type="button" class="btn btn-primary rounded-5 m-1">'+user+'</button>';
+        }
+
     }
 });

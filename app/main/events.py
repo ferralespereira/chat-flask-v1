@@ -20,7 +20,10 @@ def joined(message):
     room = session.get('room')
     join_room(room)
 
-    list_users.append(session['name'])
+    # if user do not exists in the lis, i add it
+    exists = session['name'] in list_users
+    if not exists:
+        list_users.append(session['name'])
 
     emit('status', {
                     'msg':        session.get('name') + ' has entered the room.',
@@ -42,6 +45,9 @@ def left(message):
     A status message is broadcast to all people in the room."""
     room = session.get('room')
     leave_room(room)
+
+    # when i leave_room remove the user from list_user
+    list_users.remove(session['name'])
 
     # remove this user from session['users']
     # session['users']=NULL
