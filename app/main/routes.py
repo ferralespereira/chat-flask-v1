@@ -10,16 +10,6 @@ def index():
     if form.validate_on_submit():
         session['name'] = form.name.data
         session['room'] = form.room.data
-
-        # storing user in session
-        if 'users' not in session:
-            session['users'] = [form.name.data]
-        else:
-            list_users = session['users']
-            list_users.append(form.name.data)
-            session['users'] = list_users
-
-        print(session)
         return redirect(url_for('.chat'))
     elif request.method == 'GET':
         form.name.data = session.get('name', '')
