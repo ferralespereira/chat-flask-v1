@@ -5,7 +5,7 @@ from .. import socketio
 list_users = []
 
 @socketio.on('get user list', namespace='/')
-def sendMyUserName():
+def getUserList():
     emit('get user list', {
                     'msg': 'jaaj',
                     'list_users': list_users
@@ -25,8 +25,8 @@ def joined(message):
         list_users.append(session['name'])
 
     emit('status', {
-                    'msg':session.get('name') + ' has entered the room.'
-                    }, room=room)
+                'msg':session.get('name') + ' has entered the room.'
+                }, room=room)
 
 
 @socketio.on('text', namespace='/chat')
