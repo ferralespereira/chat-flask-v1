@@ -6,7 +6,7 @@ from .. import socketio
 def userConnected():
     emit('user connected', {
                             'msg':' send me your user name.'
-                            },broadcast=True, include_self=False)
+                            }, broadcast=True, include_self=False)
 
 @socketio.on('send my user name', namespace='/')
 def sendMyUserName():
