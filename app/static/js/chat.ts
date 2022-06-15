@@ -1,8 +1,6 @@
 let socket:any = io.connect('http://' + document.domain + ':' + location.port + '/chat');
 
-// socket.on('connect', function() {
-    socket.emit('joined', {});
-// });
+socket.emit('joined', {});
 
 socket.on('status', function(data:any) {
     let textare_chat:any = document.getElementById('chat');

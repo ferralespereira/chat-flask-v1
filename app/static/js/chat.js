@@ -1,7 +1,5 @@
 var socket = io.connect('http://' + document.domain + ':' + location.port + '/chat');
-// socket.on('connect', function() {
 socket.emit('joined', {});
-// });
 socket.on('status', function (data) {
     var textare_chat = document.getElementById('chat');
     textare_chat.value += '<' + data.msg + '>\n';
