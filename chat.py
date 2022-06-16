@@ -9,11 +9,13 @@ app = create_app(debug=True)
 def userName():
     if session.get('name'):
         return{
-                'user_name': session['name']
+                'user_name': session['name'],
+                'room': session['room']
             }
     else:
         return{
-                'user_name': ''
+                'user_name': '',
+                'room': ''
             }
 
 if __name__ == '__main__':
