@@ -5,7 +5,8 @@
     {% include 'users.html' %}
 
     {# div chat #}
-    {% if user_name %}
+    {#{% if user_name %}#}
+
         {{ user_name }}
 
         <div class="row col-md-4 p-3">
@@ -16,12 +17,9 @@
             <a href="/" onclick="leave_room();">Leave this room</a>
         </div>
             
-        {# socketIO #}
-        <script type="text/javascript" src="//cdn.socket.io/4.4.1/socket.io.min.js"></script>
-        
-        <script type="text/javascript" src="{{ url_for('static', filename = 'js/chat.js') }}"></script>
+       
 
-    {% else %}
+    {#{% else %}#}
 
         {# login form #}
         <form method="POST">
@@ -31,6 +29,11 @@
             {{ form.submit() }}
         </form>
 
-    {% endif %}
+    {#{% endif %}#}
 
+     {# socketIO #}
+     <script type="text/javascript" src="//cdn.socket.io/4.4.1/socket.io.min.js"></script>
+        
+     <script type="text/javascript" src="{{ url_for('static', filename = 'js/chat.js') }}"></script>
+     
 {% endblock content %}
