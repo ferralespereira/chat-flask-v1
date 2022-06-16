@@ -8,7 +8,7 @@ socket.on('status', function(data:any) {
     textare_chat.scrollTop = textare_chat.scrollHeight;
 });
 
-socket.on('message', function(data) {
+socket.on('message', function(data:any) {
     let textare_chat:any = document.getElementById('chat');
     textare_chat.value += '<' + data.msg + '>\n';
     textare_chat.scrollTop = textare_chat.scrollHeight;
