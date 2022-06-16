@@ -2,11 +2,35 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {{ form.hidden_tag() }}
-    {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
-    {{ form.room.label }}: {{ form.room() }} {% for error in form.room.errors %}{{ error }}{% endfor %}<br>
-    {{ form.submit() }}
-</form>
-{{ user_name }}
+    {% include 'users.html' %}
+
+    {# div chat #}
+    {% if user_name %}
+        {{ user_name }}
+
+        <div class="row col-md-4 p-3">
+            <h4>{{name}}</h4>
+            <h5>Chat, Room: {{ room }}</h3>
+            <textarea class="form-control bg-white" disabled id="chat" rows="10"></textarea><br><br>
+            <input id="text" size="80" onkeypress="sendText(event)" placeholder="Enter your message here"><br><br>
+            <a href="/" onclick="leave_room();">Leave this room</a>
+        </div>
+            
+        {# socketIO #}
+        <script type="text/javascript" src="//cdn.socket.io/4.4.1/socket.io.min.js"></script>
+        
+        <script type="text/javascript" src="{{ url_for('static', filename = 'js/chat.js') }}"></script>
+
+    {% else %}
+
+        {# login form #}
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
+            {{ form.room.label }}: {{ form.room() }} {% for error in form.room.errors %}{{ error }}{% endfor %}<br>
+            {{ form.submit() }}
+        </form>
+
+    {% endif %}
+
 {% endblock content %}
