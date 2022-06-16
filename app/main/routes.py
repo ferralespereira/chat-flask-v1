@@ -9,15 +9,16 @@ def index():
     form = LoginForm()
     session['name'] = form.name.data
     session['room'] = form.room.data
+
     return render_template('index.html', form=form)
 
 
-@main.route('/chat')
-def chat():
-    """Chat room. The user's name and room must be stored in
-    the session."""
-    name = session.get('name', '')
-    room = session.get('room', '')
-    if name == '' or room == '':
-        return redirect(url_for('.index'))
-    return render_template('chat.html', name=name, room=room)
+# @main.route('/chat')
+# def chat():
+#     """Chat room. The user's name and room must be stored in
+#     the session."""
+#     name = session.get('name', '')
+#     room = session.get('room', '')
+#     if name == '' or room == '':
+#         return redirect(url_for('.index'))
+#     return render_template('chat.html', name=name, room=room)

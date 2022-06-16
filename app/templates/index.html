@@ -7,7 +7,7 @@
     {# div chat #}
     {#{% if user_name %}#}
 
-        {{ user_name }}
+        aqui {{ user_name }}
 
         <div class="row col-md-4 p-3">
             <h4>{{name}}</h4>
@@ -35,5 +35,5 @@
      <script type="text/javascript" src="//cdn.socket.io/4.4.1/socket.io.min.js"></script>
         
      <script type="text/javascript" src="{{ url_for('static', filename = 'js/chat.js') }}"></script>
-     
+
 {% endblock content %}
