@@ -8,5 +8,5 @@
     {{ form.room.label }}: {{ form.room() }} {% for error in form.room.errors %}{{ error }}{% endfor %}<br>
     {{ form.submit() }}
 </form>
-
+{{ user_name }}
 {% endblock content %}
