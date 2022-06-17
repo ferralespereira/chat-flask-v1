@@ -2,21 +2,19 @@
 {% block title %}Login{% endblock title %}
 
 {% block content %}
-    {# login form #}
-    <form action="" method='POST' class="p-4">
 
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" required id="name" name="name" placeholder="">
-            <label for="name">Name</label>
+    <form action="" method="post" novalidate>
+    
+        <div class="form-floating">
+            {{ form.name(class_="form-control", placeholder="") }}
+            {{ form.name.label(for="name") }}
         </div>
         
         {# div users #}
         <div id="users" name="users" class="alert alert-secondary my-3 p-3">
         </div>
-
+    
     </form>
-
-
 
     {# div chat #}
     {#{% if user_name %}#}
