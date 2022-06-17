@@ -3,35 +3,18 @@
 
 {% block content %}
     {# login form #}
-    <form method="POST">
-        {#
-        {{ form.hidden_tag() }}
-        {{ form.name.label }}: {{ form.name() }} {% for error in form.name.errors %}{{ error }}{% endfor %}<br>
-        {{ form.room.label }}: {{ form.room() }} {% for error in form.room.errors %}{{ error }}{% endfor %}<br>
-        {{ form.submit() }}
-        #}
+    <form action="" method='POST' class="p-4">
 
-        <form action="" method='POST' class="p-4">
-
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" required id="name" name="name" placeholder="">
-                <label for="name">Name</label>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" required id="room" name="room" placeholder="">
-                <label for="room">Room</label>
-            </div>
-
-            <button type="submit" title="go" class="bi bi-check2 text-primary fs-1 border-0 bg-transparent"></button>
-
-        </form>
-
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" required id="name" name="name" placeholder="">
+            <label for="name">Name</label>
+        </div>
+        
         {# div users #}
         <div id="users" name="users" class="alert alert-secondary my-3 p-3">
         </div>
-    </form>
 
+    </form>
 
 
 

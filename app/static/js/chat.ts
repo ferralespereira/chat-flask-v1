@@ -41,7 +41,7 @@ socket.on('get user list', function(data:any){
 
     for (let user of data.list_users) {
         if (user){
-            users.innerHTML += '<button type="button" class="btn btn-primary rounded-5 m-1">'+user+'</button>';
+            users.innerHTML += '<button type="submit" name="room" value="'+user+'" class="btn btn-primary rounded-5 m-1">'+user+'</button>';
         }
     }
 });

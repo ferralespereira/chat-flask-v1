@@ -11,9 +11,8 @@ def index():
     # session['room'] = form.room.data
 
     if request.method == 'POST':
-        name    = request.form['name']
-        print(name)
-        print(request.form)
+        session['name'] = request.form['name']
+        session['room'] = request.form['room']
+        return render_template('index.html', name=session['name'])
 
-    # return render_template('index.html', form=form)
     return render_template('index.html')
