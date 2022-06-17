@@ -14,18 +14,20 @@ def getUserList():
 
 @socketio.on('joined')
 def joined(message):
-    """Sent by clients when they enter a room.
-    A status message is broadcast to all people in the room."""
-    room = session.get('room')
-    join_room(room)
-
-    # if user do not exists in the list, i add it
-    exists = session['name'] in list_users
-    if not exists:
-        list_users.append(session['name'])
-
-    emit('status', {
-                'msg':session.get('name') + ' has entered the room.'
+    # if user is is loged
+    name = session.get('name')
+    if (name):
+        
+        # if user do not exists in the list, i add it
+        exists = name in list_users
+        if not exists:
+            list_users.append(name)
+        
+        room = session.get('room')
+        join_room(room)
+        
+        emit('status', {
+                'msg':name + ' has entered the room.'
                 }, room=room)
 
 
