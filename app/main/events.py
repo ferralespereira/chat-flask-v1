@@ -6,6 +6,9 @@ list_users = []
 
 @socketio.on('get user list')
 def getUserList():
+    print('***----------------get user list----------------***')
+    print(list_users)
+
     emit('get user list', {
                     'msg': 'jaaj',
                     'list_users': list_users
@@ -14,6 +17,10 @@ def getUserList():
 
 @socketio.on('joined')
 def joined(message):
+
+    print('***----------------joined----------------***')
+    print(session.get('name'))
+
     # if user is is loged
     name = session.get('name')
     if (name):
@@ -33,6 +40,9 @@ def joined(message):
 
 @socketio.on('text')
 def text(message):
+
+    print('***----------------text----------------***')
+
     """Sent by a client when the user entered a new message.
     The message is sent to all people in the room."""
     room = session.get('room')
@@ -48,9 +58,9 @@ def left(message):
 
     # when i leave_room remove the user from list_user
     list_users.remove(session.get('name'))
-    
-    session.pop('name')
+        
+    print('***----------------left----------------***')
+    print(session.get('name'))
 
-    # emit('status', {'msg': session.get('name') + ' has left the room.'}, room=room)
     emit('status', {'msg': ' has left the room.'}, room=room)
 
