@@ -1,6 +1,8 @@
 let socket:any = io.connect('http://' + document.domain + ':' + location.port);
 
-socket.emit('joined', {});
+// socket.on('connect', function(){
+    socket.emit('joined', {});
+// });
 
 socket.on('status', function(data:any) {
     let textare_chat:any = document.getElementById('chat');
@@ -50,6 +52,6 @@ socket.on('get user list', function(data:any){
         users.innerHTML = '<button type="submit" name="room" value="go" class="btn btn-primary rounded-5 m-1">Go</button>';
     }
 
-    console.log(data.list_users);
-    console.log((data.list_users[0]).length);
+    // console.log(data.list_users);
+    // console.log((data.list_users[0]).length);
 });

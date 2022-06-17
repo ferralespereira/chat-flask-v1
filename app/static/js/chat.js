@@ -1,5 +1,7 @@
 var socket = io.connect('http://' + document.domain + ':' + location.port);
+// socket.on('connect', function(){
 socket.emit('joined', {});
+// });
 socket.on('status', function (data) {
     var textare_chat = document.getElementById('chat');
     textare_chat.value += '<' + data.msg + '>\n';
@@ -40,6 +42,6 @@ socket.on('get user list', function (data) {
     else {
         users.innerHTML = '<button type="submit" name="room" value="go" class="btn btn-primary rounded-5 m-1">Go</button>';
     }
-    console.log(data.list_users);
-    console.log((data.list_users[0]).length);
+    // console.log(data.list_users);
+    // console.log((data.list_users[0]).length);
 });

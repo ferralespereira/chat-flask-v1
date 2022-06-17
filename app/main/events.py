@@ -47,7 +47,7 @@ def left(message):
     leave_room(room)
 
     # when i leave_room remove the user from list_user
-    list_users.remove(session['name'])
+    list_users.remove(session.get('name'))
     
     session.pop('name')
 
