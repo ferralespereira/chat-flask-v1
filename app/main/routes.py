@@ -7,12 +7,14 @@ from .forms import LoginForm
 def index():
     form = LoginForm()
     if request.method == 'POST':
-        # session['name'] = request.form['name']
-        # session['room'] = request.form['room']
-
         session['name'] = form.name.data
         session['room'] = request.form['room']
 
         return render_template('index.html', form=form)
-
-    return render_template('index.html', form=form)
+    
+    if request.method == 'GET':
+        if session.get('name'):
+            form.name.data =  session['name'] 
+        else:
+            form.name.data =  "" 
+        return render_template('index.html', form=form)

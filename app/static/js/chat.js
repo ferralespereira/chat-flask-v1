@@ -27,11 +27,18 @@ function leave_room() {
 socket.emit('get user list');
 socket.on('get user list', function (data) {
     var users = document.getElementById('users');
-    users.innerHTML = 'Users connected: <br>';
-    for (var _i = 0, _a = data.list_users; _i < _a.length; _i++) {
-        var user = _a[_i];
-        if (user) {
-            users.innerHTML += '<button type="submit" name="room" value="' + user + '" class="btn btn-primary rounded-5 m-1">' + user + '</button>';
+    // if are users connected
+    if ((data.list_users).length > 0 && (data.list_users[0]).length > 0) {
+        users.innerHTML = 'Users connected: <br>';
+        for (var _i = 0, _a = data.list_users; _i < _a.length; _i++) {
+            var user = _a[_i];
+            if (user) {
+                users.innerHTML += '<button type="submit" name="room" value="' + user + '" class="btn btn-primary rounded-5 m-1">' + user + '</button>';
+            }
         }
     }
+    else {
+        users.innerHTML = '<button type="submit" name="room" value="go" class="btn btn-primary rounded-5 m-1">Go</button>';
+    }
+    console.log((data.list_users[0]).length);
 });
