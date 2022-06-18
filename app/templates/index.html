@@ -7,20 +7,20 @@
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
-            <div class="alert alert-{{ category }}" role="alert" "> {{ message }} </div>
+            <div class="alert alert-{{ category }} col-md-8 offset-md-2 mt-2" align="center" role="alert" "> {{ message }} </div>
             {% endfor %}
         {% endif %}
         {% endwith %}
  
         <form action="" method="post">
         
-            <div class="form-floating col-sm-6 offset-sm-3 text-primary">
-                {{ form.name(class_="form-control border-primary border-opacity-50 fs-4 fw-bold text-primary", placeholder="") }}
+            <div class="form-floating col-sm-6 offset-sm-2 text-primary">
+                {{ form.name(class_="form-control border-primary border-opacity-50 fs-5 fw-bolder text-primary", placeholder="") }}
                 {{ form.name.label(for="name") }}
             </div>
             
             {# div users #}
-            <div id="users" name="users" class="alert alert-info p-3 mt-5 bg-opacity-10 border border-info border-opacity-10 rounded">
+            <div id="users" name="users" class="alert alert-info border border-info border-opacity-10 rounded p-3 mt-5">
             </div>
         
         </form>
@@ -31,8 +31,8 @@
             <div class="p-3">
                 <h4>{{user_name}}</h4>
                 <h5>Chat, Room: {{ room }}</h3>
-                <textarea class="form-control bg-white" disabled id="chat" rows="10"></textarea><br><br>
-                <input id="text" class="form-control" size="80" onkeypress="sendText(event)" placeholder="Enter your message here"><br><br>
+                <textarea class="form-control bg-white rounded-top rounded-0" disabled id="chat" rows="5"></textarea>
+                <input id="text" class="form-control rounded-bottom rounded-0" size="80" onkeypress="sendText(event)" placeholder="Enter your message here"><br><br>
                 <a href="/left" onclick="leave_room();">Leave this room</a>
             </div>
                 
