@@ -1,4 +1,4 @@
-from flask import session, redirect, url_for, render_template, request
+from flask import session, redirect, url_for, render_template, request, flash
 from . import main
 from .forms import LoginForm
 
@@ -16,13 +16,18 @@ def index():
             session['room'] = request.form['room']
             
             print('validation true')
+            flash(session['name']+ ' Welcome!!', 'success')
         else:
             print('validation false')
+            flash(form.name.errors[0], 'warning')
 
     if request.method == 'GET':
         if session.get('name'):
             form.name.data =  session['name']
-    
+        else:
+            flash('to get start you must write your Nickname and press go!!', 'success')
+
+
     return render_template('index.html', form=form)
 
 
