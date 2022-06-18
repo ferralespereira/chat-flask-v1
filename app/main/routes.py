@@ -25,7 +25,7 @@ def index():
         if session.get('name'):
             form.name.data =  session['name']
         else:
-            flash('To get start you must write your Nickname and press Go!!', 'success')
+            flash('Hi, write your Nickname and press Go!!', 'success')
 
 
     return render_template('index.html', form=form)
