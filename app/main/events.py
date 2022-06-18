@@ -8,6 +8,8 @@ list_users = []
 def getUserList():
     print('***----------------get user list----------------***')
     print(list_users)
+    print('user_sesion:')
+    print(session.get('name'))
 
     emit('get user list', {
                     'msg': 'jaaj',

@@ -9,19 +9,21 @@ def index():
     print('***----------------index----------------***')
     # print(session['name'])
 
-    form = LoginForm()
+    form = LoginForm(request.form)
     if request.method == 'POST':
-        session['name'] = form.name.data
-        session['room'] = request.form['room']
-
-        return render_template('index.html', form=form)
+        if form.validate():
+            session['name'] = form.name.data
+            session['room'] = request.form['room']
+            
+            print('validation true')
+        else:
+            print('validation false')
 
     if request.method == 'GET':
         if session.get('name'):
             form.name.data =  session['name']
-        else:
-            form.name.data =  ""
-        return render_template('index.html', form=form)
+    
+    return render_template('index.html', form=form)
 
 
 @main.route('/left', methods=['GET'])

@@ -1,8 +1,6 @@
-from flask_wtf import FlaskForm
-from wtforms.fields import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import Form, StringField, validators
 
 
-class LoginForm(FlaskForm):
+class LoginForm(Form):
     """name"""
-    name = StringField('Username', validators=[DataRequired()])
+    name = StringField('Username', [validators.DataRequired(), validators.Length(min=3, max=15), validators.Regexp(r'^[\w.@+-]+$') ])
