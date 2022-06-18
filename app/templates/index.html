@@ -12,15 +12,15 @@
         {% endif %}
         {% endwith %}
  
-        <form action="" method="post" novalidate>
+        <form action="" method="post">
         
-            <div class="form-floating">
-                {{ form.name(class_="form-control", placeholder="") }}
+            <div class="form-floating col-sm-6 offset-sm-3 text-primary">
+                {{ form.name(class_="form-control border-primary border-opacity-50 fs-4 fw-bold text-primary", placeholder="") }}
                 {{ form.name.label(for="name") }}
             </div>
             
             {# div users #}
-            <div id="users" name="users" class="alert alert-secondary my-3 p-3">
+            <div id="users" name="users" class="alert alert-info p-3 mt-5 bg-opacity-10 border border-info border-opacity-10 rounded">
             </div>
         
         </form>
