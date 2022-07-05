@@ -12,11 +12,17 @@ def index():
     form = LoginForm(request.form)
     if request.method == 'POST':
         if form.validate():
-            session['name'] = form.name.data
-            session['room'] = request.form['room']
-            
-            print('validation true')
-            flash(session['name']+ ' Welcome!!', 'success')
+            # if the user is already login and wrote a different name
+            if session.get('name') and session.get('name') != form.name.data:
+                form.name.data = session.get('name')
+                print('this user is already login')
+                flash('To change you Nickname you must logout', 'warning')
+            else:
+                session['name'] = form.name.data
+                session['room'] = request.form['room']
+                
+                print('validation true')
+                flash(session['name']+ ' Welcome!!', 'success')
         else:
             print('validation false')
             flash(form.name.errors[0], 'warning')

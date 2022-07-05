@@ -44,6 +44,8 @@ def joined(message):
 def text(message):
 
     print('***----------------text----------------***')
+    print('name: '+session.get('name'))
+    print('room: '+session.get('room'))
 
     """Sent by a client when the user entered a new message.
     The message is sent to all people in the room."""
