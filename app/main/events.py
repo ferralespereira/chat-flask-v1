@@ -58,9 +58,6 @@ def left(message):
     A status message is broadcast to all people in the room."""
     room = session.get('room')
     leave_room(room)
-
-    # when i leave_room remove the user from list_user
-    list_users.remove(session.get('name'))
         
     print('***----------------left----------------***')
     print(session.get('name'))

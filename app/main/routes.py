@@ -39,7 +39,15 @@ def index():
 
 @main.route('/left', methods=['GET'])
 def left():
-    print('***----------------left----------------***')
-    # remove the sesion name
+    print('***----------------left GET----------------***')
+    
+    # remove the user from list_user
+    list_users.remove(session.get('name'))
+
+    # remove the 'sesion name' and 'sesion room'
     session.pop('name')
+    session.pop('room')
+
+    print(session.get('name'))
+
     return redirect(url_for('main.index'))
