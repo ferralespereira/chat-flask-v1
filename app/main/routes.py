@@ -12,17 +12,31 @@ def index():
     form = LoginForm(request.form)
     if request.method == 'POST':
         if form.validate():
-            # if the user is already login and wrote a different name
-            if session.get('name') and session.get('name') != form.name.data:
-                form.name.data = session.get('name')
-                print('this user is already login')
-                flash('To change you Nickname you must logout', 'warning')
+            # if 'sessio name' is created
+            if session.get('name'):
+                # if the user wrote a different name
+                if session.get('name') != form.name.data:
+                    form.name.data = session.get('name')
+                    print('this user is already login')
+                    flash('To change you Nickname you must logout', 'warning')
             else:
-                session['name'] = form.name.data
-                session['room'] = request.form['room']
+                exists = form.name.data in list_users
+                # if the name the user wrote is already taken
+                if exists:
+                    form.name.data = ''
+                    print('exist')
+                    flash('This Nickname had been taken, please chose another one', 'warning')
+                else:
+                    # create 'session name' and 'session room'
+                    session['name'] = form.name.data
+                    session['room'] = request.form['room']
+                    
+                    # add 'session name' into list_users 
+                    list_users.append(session['name'])
                 
-                print('validation true')
-                flash(session['name']+ ' Welcome!!', 'success')
+                    print('validation true')
+                    flash(session['name']+ ' Welcome!!', 'success')
+
         else:
             print('validation false')
             flash(form.name.errors[0], 'warning')
