@@ -1,13 +1,13 @@
 from flask import session, redirect, url_for, render_template, request, flash
 from . import main
 from .forms import LoginForm
-
+from app import list_users
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
 
     print('***----------------index----------------***')
-    # print(session['name'])
+    print(list_users)
 
     form = LoginForm(request.form)
     if request.method == 'POST':

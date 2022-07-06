@@ -1,8 +1,7 @@
 from flask import session
 from flask_socketio import emit, join_room, leave_room
 from .. import socketio
-
-list_users = []
+from app import list_users
 
 @socketio.on('get user list')
 def getUserList():

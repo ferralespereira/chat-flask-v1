@@ -1,6 +1,9 @@
 from flask import Flask
 from flask_socketio import SocketIO
 
+global list_users
+list_users = []
+
 socketio = SocketIO()
 
 
