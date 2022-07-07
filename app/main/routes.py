@@ -27,15 +27,17 @@ def index():
                     print('exist')
                     flash('This Nickname had been taken, please chose another one', 'warning')
                 else:
-                    # create 'session name' and 'session room'
+                    # create 'session name'
                     session['name'] = form.name.data
-                    session['room'] = request.form['room']
-                    
+
                     # add 'session name' into list_users 
                     list_users.append(session['name'])
                 
                     print('validation true')
                     flash(session['name']+ ' Welcome!!', 'success')
+            
+            # create or update 'session room' (to enable switch betewn rooms)
+            session['room'] = request.form['room']
 
         else:
             print('validation false')

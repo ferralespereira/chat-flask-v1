@@ -24,20 +24,15 @@ def joined(message):
     print(session.get('name'))
 
     # if user is is loged
-    # name = session.get('name')
-    # if (name):
+    name = session.get('name')
+    if (name):
         
-    #     # if user do not exists in the list, i add it
-    #     exists = name in list_users
-    #     if not exists:
-    #         list_users.append(name)
+        room = session.get('room')
+        join_room(room)
         
-    #     room = session.get('room')
-    #     join_room(room)
-        
-    #     emit('status', {
-    #             'msg':name + ' has entered the room.'
-    #             }, room=room)
+        emit('status', {
+                'msg':name + ' has entered the room.'
+                }, room=room)
 
 
 @socketio.on('text')
