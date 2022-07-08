@@ -4,7 +4,7 @@ let socket:any = io.connect('http://' + document.domain + ':' + location.port);
     socket.emit('joined');
 // });
 
-socket.on('give me your name', function(data:any) {
+socket.on('give me your name', function() {
     let user_name:any = document.getElementById('user-name');
     socket.emit('take my name', { user_name: user_name.innerHTML });
 });

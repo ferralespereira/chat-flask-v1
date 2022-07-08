@@ -2,7 +2,7 @@ var socket = io.connect('http://' + document.domain + ':' + location.port);
 // socket.on('connect', function(){
 socket.emit('joined');
 // });
-socket.on('give me your name', function (data) {
+socket.on('give me your name', function () {
     var user_name = document.getElementById('user-name');
     socket.emit('take my name', { user_name: user_name.innerHTML });
 });

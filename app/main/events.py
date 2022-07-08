@@ -24,10 +24,7 @@ def joined():
 
     # remove list_users 
     del list_users[:]
-    emit('give me your name', {
-                'msg': 'List of users',
-                'list_users': list_users
-                },broadcast=True)
+    emit('give me your name',broadcast=True)
 
 
 @socketio.on('take my name')
