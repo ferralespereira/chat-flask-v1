@@ -4,21 +4,6 @@ from .. import socketio
 from app import list_users
 
 
-@socketio.on('take my name')
-def takeMyName(data):
-    print('**********************users***********')
-
-    # if user is loged add it to the list_users
-    if data['user_name']:
-        list_users.append(data['user_name'])
-    print(list_users)
-
-    emit('get user list', {
-                    'msg': 'List of users',
-                    'list_users': list_users
-                    },broadcast=True)
-
-
 @socketio.on('joined')
 def joined():
 
@@ -43,7 +28,21 @@ def joined():
                 'msg': 'List of users',
                 'list_users': list_users
                 },broadcast=True)
-    
+
+
+@socketio.on('take my name')
+def takeMyName(data):
+    print('**********************users***********')
+
+    # if user is loged add it to the list_users
+    if data['user_name']:
+        list_users.append(data['user_name'])
+    print(list_users)
+
+    emit('get user list', {
+                    'msg': 'List of users',
+                    'list_users': list_users
+                    },broadcast=True)
 
 
 @socketio.on('text')
