@@ -3,12 +3,14 @@ from flask_socketio import emit, join_room, leave_room
 from .. import socketio
 from app import list_users
 
-@socketio.on('get user list')
-def getUserList():
-    print('***----------------get user list----------------***')
+
+@socketio.on('take my name')
+def takeMyName(data):
+    print('**********************users***********')
+
+    if data['user_name']:
+        list_users.append(data['user_name'])
     print(list_users)
-    print('user_sesion:')
-    print(session.get('name'))
 
     emit('get user list', {
                     'msg': 'jaaj',
@@ -17,7 +19,7 @@ def getUserList():
 
 
 @socketio.on('joined')
-def joined(message):
+def joined():
 
     print('***----------------joined----------------***')
     print('user name:')
@@ -33,6 +35,14 @@ def joined(message):
         emit('status', {
                 'msg':name + ' has entered the room.'
                 }, room=room)
+
+    del list_users[:]
+
+    emit('give me your name', {
+                'msg': 'message',
+                'list_users': list_users
+                },broadcast=True)
+    
 
 
 @socketio.on('text')

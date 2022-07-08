@@ -1,8 +1,13 @@
 let socket:any = io.connect('http://' + document.domain + ':' + location.port);
 
 // socket.on('connect', function(){
-    socket.emit('joined', {});
+    socket.emit('joined');
 // });
+
+socket.on('give me your name', function(data:any) {
+    let user_name:any = document.getElementById('user-name');
+    socket.emit('take my name', { user_name: user_name.innerHTML });
+});
 
 socket.on('status', function(data:any) {
     let textare_chat:any = document.getElementById('chat');
@@ -31,9 +36,6 @@ function leave_room() {
     });
 }
 
-
-// when i enter or refresh the page, i'll get all users that are connected
-socket.emit('get user list');
 
 socket.on('get user list', function(data:any){
 

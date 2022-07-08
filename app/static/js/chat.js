@@ -1,7 +1,11 @@
 var socket = io.connect('http://' + document.domain + ':' + location.port);
 // socket.on('connect', function(){
-socket.emit('joined', {});
+socket.emit('joined');
 // });
+socket.on('give me your name', function (data) {
+    var user_name = document.getElementById('user-name');
+    socket.emit('take my name', { user_name: user_name.innerHTML });
+});
 socket.on('status', function (data) {
     var textare_chat = document.getElementById('chat');
     textare_chat.value += '<' + data.msg + '>\n';
@@ -25,8 +29,6 @@ function leave_room() {
         socket.disconnect();
     });
 }
-// when i enter or refresh the page, i'll get all users that are connected
-socket.emit('get user list');
 socket.on('get user list', function (data) {
     var users = document.getElementById('users');
     // if are users connected
