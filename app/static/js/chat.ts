@@ -4,13 +4,13 @@ let socket:any = io.connect('http://' + document.domain + ':' + location.port);
     socket.emit('joined');
 // });
 
+
+let user_name:any = document.getElementById('user-name');
 socket.on('give me your name', function() {
-    let user_name:any = document.getElementById('user-name');
     socket.emit('take my name', { user_name: user_name.innerHTML });
 });
 
 socket.on('get user list', function(data:any){
-
     let users:any = document.getElementById('users');
 
     // if are users connected
@@ -19,7 +19,11 @@ socket.on('get user list', function(data:any){
     
         for (let user of data.list_users) {
             if (user){
-                users.innerHTML += '<button type="submit" name="room" value="'+user+'" class="btn btn-primary rounded-5 m-1">'+user+'</button>';
+                let btn_class:String = 'btn btn-primary rounded-5 m-1';
+                if (user == user_name.innerHTML){
+                    btn_class = 'btn btn-info rounded-5 m-1';
+                }
+                users.innerHTML += '<button type="submit" name="room" value="'+user+'" class="'+btn_class+'">'+user+'</button>';
             }
         }
     }else{

@@ -2,8 +2,8 @@ var socket = io.connect('http://' + document.domain + ':' + location.port);
 // socket.on('connect', function(){
 socket.emit('joined');
 // });
+var user_name = document.getElementById('user-name');
 socket.on('give me your name', function () {
-    var user_name = document.getElementById('user-name');
     socket.emit('take my name', { user_name: user_name.innerHTML });
 });
 socket.on('get user list', function (data) {
@@ -14,7 +14,11 @@ socket.on('get user list', function (data) {
         for (var _i = 0, _a = data.list_users; _i < _a.length; _i++) {
             var user = _a[_i];
             if (user) {
-                users.innerHTML += '<button type="submit" name="room" value="' + user + '" class="btn btn-primary rounded-5 m-1">' + user + '</button>';
+                var btn_class = 'btn btn-primary rounded-5 m-1';
+                if (user == user_name.innerHTML) {
+                    btn_class = 'btn btn-info rounded-5 m-1';
+                }
+                users.innerHTML += '<button type="submit" name="room" value="' + user + '" class="' + btn_class + '">' + user + '</button>';
             }
         }
     }
