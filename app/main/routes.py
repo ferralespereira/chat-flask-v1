@@ -12,7 +12,7 @@ def index():
     form = LoginForm(request.form)
     if request.method == 'POST':
         if form.validate():
-            # if 'sessio name' is created
+            # if user is logged
             if session.get('name'):
                 # if the user wrote a different name
                 if session.get('name') != form.name.data:
@@ -24,14 +24,11 @@ def index():
                 # if the name the user wrote is already taken
                 if exists:
                     form.name.data = ''
-                    print('exist')
+                    print('this name exist in list_users')
                     flash('This Nickname had been taken, please chose another one', 'warning')
                 else:
-                    # create 'session name'
+                    # login the user
                     session['name'] = form.name.data
-
-                    # add 'session name' into list_users 
-                    list_users.append(session['name'])
                 
                     print('validation true')
                     flash(session['name']+ ' Welcome!!', 'success')
@@ -56,11 +53,8 @@ def index():
 @main.route('/left', methods=['GET'])
 def left():
     print('***----------------left GET----------------***')
-    
-    # remove the user from list_user
-    list_users.remove(session.get('name'))
 
-    # remove the 'sesion name' and 'sesion room'
+    # remove the 'sesion name' and 'sesion room' (logout the user)
     session.pop('name')
     session.pop('room')
 
