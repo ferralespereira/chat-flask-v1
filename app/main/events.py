@@ -8,12 +8,13 @@ from app import list_users
 def takeMyName(data):
     print('**********************users***********')
 
+    # if user is loged add it to the list_users
     if data['user_name']:
         list_users.append(data['user_name'])
     print(list_users)
 
     emit('get user list', {
-                    'msg': 'jaaj',
+                    'msg': 'List of users',
                     'list_users': list_users
                     },broadcast=True)
 
@@ -36,10 +37,10 @@ def joined():
                 'msg':name + ' has entered the room.'
                 }, room=room)
 
+    # remove list_users 
     del list_users[:]
-
     emit('give me your name', {
-                'msg': 'message',
+                'msg': 'List of users',
                 'list_users': list_users
                 },broadcast=True)
     

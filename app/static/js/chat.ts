@@ -9,6 +9,25 @@ socket.on('give me your name', function(data:any) {
     socket.emit('take my name', { user_name: user_name.innerHTML });
 });
 
+socket.on('get user list', function(data:any){
+
+    let users:any = document.getElementById('users');
+
+    // if are users connected
+    if ((data.list_users).length > 0 && (data.list_users[0]).length > 0 ){
+        users.innerHTML = 'Users connected: <br>';
+    
+        for (let user of data.list_users) {
+            if (user){
+                users.innerHTML += '<button type="submit" name="room" value="'+user+'" class="btn btn-primary rounded-5 m-1">'+user+'</button>';
+            }
+        }
+    }else{
+        users.innerHTML = '<button type="submit" name="room" value="go" class="btn btn-primary rounded-5 m-1">Go</button>';
+    }
+
+});
+
 socket.on('status', function(data:any) {
     let textare_chat:any = document.getElementById('chat');
     textare_chat.value += '<' + data.msg + '>\n';
@@ -35,25 +54,3 @@ function leave_room() {
         socket.disconnect();
     });
 }
-
-
-socket.on('get user list', function(data:any){
-
-    let users:any = document.getElementById('users');
-
-    // if are users connected
-    if ((data.list_users).length > 0 && (data.list_users[0]).length > 0 ){
-        users.innerHTML = 'Users connected: <br>';
-    
-        for (let user of data.list_users) {
-            if (user){
-                users.innerHTML += '<button type="submit" name="room" value="'+user+'" class="btn btn-primary rounded-5 m-1">'+user+'</button>';
-            }
-        }
-    }else{
-        users.innerHTML = '<button type="submit" name="room" value="go" class="btn btn-primary rounded-5 m-1">Go</button>';
-    }
-
-    // console.log(data.list_users);
-    // console.log((data.list_users[0]).length);
-});
