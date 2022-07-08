@@ -40,8 +40,3 @@ function sendText(e) {
         text.value = '';
     }
 }
-function leave_room() {
-    socket.emit('left', {}, function () {
-        socket.disconnect();
-    });
-}

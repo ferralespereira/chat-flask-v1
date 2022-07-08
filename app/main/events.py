@@ -56,17 +56,3 @@ def text(message):
     The message is sent to all people in the room."""
     room = session.get('room')
     emit('message', {'msg': session.get('name') + ': ' + message['msg']}, room=room)
-
-
-@socketio.on('left')
-def left(message):
-    """Sent by clients when they leave a room.
-    A status message is broadcast to all people in the room."""
-    room = session.get('room')
-    leave_room(room)
-        
-    print('***----------------left----------------***')
-    print(session.get('name'))
-
-    emit('status', {'msg': ' has left the room.'}, room=room)
-

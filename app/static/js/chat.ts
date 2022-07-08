@@ -49,8 +49,3 @@ function sendText(e:any){
     }
 }
 
-function leave_room() {
-    socket.emit('left', {}, function () {
-        socket.disconnect();
-    });
-}
