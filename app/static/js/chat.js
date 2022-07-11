@@ -8,17 +8,15 @@ socket.on('give me your name', function () {
 });
 socket.on('get user list', function (data) {
     var users = document.getElementById('users');
-    // if are users connected
+    // if are users connected, show all user names in botons except mine. All this after 3 seconds
     if ((data.list_users).length > 0 && (data.list_users[0]).length > 0) {
         users.innerHTML = 'Users connected: <br>';
         for (var _i = 0, _a = data.list_users; _i < _a.length; _i++) {
             var user = _a[_i];
             if (user) {
-                var btn_class = 'btn btn-primary rounded-5 m-1';
-                if (user == user_name.innerHTML) {
-                    btn_class = 'btn btn-info rounded-5 m-1';
+                if (user != user_name.innerHTML) {
+                    users.innerHTML += '<button type="submit" name="room" value="' + user + '" class="btn btn-info rounded-5 m-1">' + user + '</button>';
                 }
-                users.innerHTML += '<button type="submit" name="room" value="' + user + '" class="' + btn_class + '">' + user + '</button>';
             }
         }
     }

@@ -12,25 +12,23 @@ socket.on('give me your name', function() {
 
 socket.on('get user list', function(data:any){
     let users:any = document.getElementById('users');
-
-    // if are users connected
+    
+    // if are users connected, show all user names in botons except mine. All this after 3 seconds
     if ((data.list_users).length > 0 && (data.list_users[0]).length > 0 ){
         users.innerHTML = 'Users connected: <br>';
     
         for (let user of data.list_users) {
             if (user){
-                let btn_class:String = 'btn btn-primary rounded-5 m-1';
-                if (user == user_name.innerHTML){
-                    btn_class = 'btn btn-info rounded-5 m-1';
+                if (user != user_name.innerHTML){
+                    users.innerHTML += '<button type="submit" name="room" value="'+user+'" class="btn btn-info rounded-5 m-1">'+user+'</button>';
                 }
-                users.innerHTML += '<button type="submit" name="room" value="'+user+'" class="'+btn_class+'">'+user+'</button>';
             }
         }
     }else{
         users.innerHTML = '<button type="submit" name="room" value="go" class="btn btn-primary rounded-5 m-1">Go</button>';
-    }
-
+    }        
 });
+    
 
 socket.on('status', function(data:any) {
     let textare_chat:any = document.getElementById('chat');
