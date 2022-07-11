@@ -34,8 +34,10 @@ def index():
                     flash(session['name']+ ' Welcome!!', 'success')
             
             # create or update 'session room' (to enable switch betewn rooms)
-            session['room'] = request.form['room']
-
+            try:
+                session['room'] = request.form['room']
+            except:
+                print('error, my be request.form[room] must be not exists')
         else:
             print('validation false')
             flash(form.name.errors[0], 'warning')
