@@ -15,12 +15,15 @@ def joined():
     name = session.get('name')
     if (name):
         
-        room = session.get('room')
-        join_room(room)
+        room_send   = name+'_'+session.get('room')
+        room_receive = session.get('room')+'_'+name
+        join_room(room_send)
+
+        print(room_send)
         
         emit('status', {
                 'msg':name + ' has entered the room.'
-                }, room=room)
+                }, room=[room_send, room_receive])
 
     # remove list_users 
     del list_users[:]
@@ -51,5 +54,11 @@ def text(message):
 
     """Sent by a client when the user entered a new message.
     The message is sent to all people in the room."""
-    room = session.get('room')
-    emit('message', {'msg': session.get('name') + ': ' + message['msg']}, room=room)
+    name = session.get('name')
+
+    room_send   = name+'_'+session.get('room')
+    room_receive = session.get('room')+'_'+name
+
+    emit('message', {
+                'msg': session.get('name') + ': ' + message['msg']
+                }, room=[room_send, room_receive])
