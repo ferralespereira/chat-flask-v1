@@ -13,7 +13,7 @@ socket.on('give me your name', function() {
 socket.on('get user list', function(data:any){
     let users:any = document.getElementById('users');
     
-    // if are users connected, show all user names in botons except mine. All this after 3 seconds
+    // if are users connected, show all user names in botons except mine
     if ((data.list_users).length > 0 && (data.list_users[0]).length > 0 ){
         users.innerHTML = 'Users connected: <br>';
     
@@ -26,7 +26,7 @@ socket.on('get user list', function(data:any){
         }
     }else{
         users.innerHTML = '<button type="submit" name="room" value="go" class="btn btn-primary rounded-5 m-1">Go</button>';
-    }        
+    }   
 });
     
 
