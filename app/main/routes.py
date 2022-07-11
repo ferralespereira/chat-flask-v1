@@ -44,7 +44,11 @@ def index():
         if session.get('name'):
             form.name.data =  session['name']
         else:
-            flash('Hi, write your Nickname and press Go!!', 'success')
+            
+            if not len(list_users):
+                flash('Hi, write your Nickname and press Go!!', 'success')
+            else:
+                flash('Hi, write your Nickname and select one user to start!!', 'success')
 
 
     return render_template('index.html', form=form)
