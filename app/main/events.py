@@ -21,6 +21,11 @@ def joined():
 
         print(room_send)
         
+        emit('connect with you',{
+                        'msg': name + ' wants to conect with you',
+                        'user_room': session.get('room')
+                        },broadcast=True)
+
         emit('status', {
                 'msg':name + ' has entered the room.'
                 }, room=[room_send, room_receive])

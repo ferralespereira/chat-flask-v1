@@ -10,6 +10,13 @@ socket.on('give me your name', function() {
     socket.emit('take my name', { user_name: user_name.innerHTML });
 });
 
+socket.on('connect with you', function(data:any){
+    let div_info:any = document.getElementById('info');
+    if (data.user_room == user_name.innerHTML){
+        div_info.innerHTML = data.msg;
+    }
+});
+
 socket.on('get user list', function(data:any){
     let users:any = document.getElementById('users');
     

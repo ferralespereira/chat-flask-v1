@@ -6,6 +6,12 @@ var user_name = document.getElementById('user-name');
 socket.on('give me your name', function () {
     socket.emit('take my name', { user_name: user_name.innerHTML });
 });
+socket.on('connect with you', function (data) {
+    var div_info = document.getElementById('info');
+    if (data.user_room == user_name.innerHTML) {
+        div_info.innerHTML = data.msg;
+    }
+});
 socket.on('get user list', function (data) {
     var users = document.getElementById('users');
     // if are users connected, show all user names in botons except mine
