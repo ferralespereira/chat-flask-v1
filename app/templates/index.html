@@ -15,11 +15,13 @@
         {% endwith %}
  
         <form action="" method="post">
-        
+            
+        {% if not user_name %}
             <div class="form-floating col-sm-6 offset-sm-2 text-primary">
                 {{ form.name(class_="form-control border-primary border-opacity-50 fs-5 fw-bolder text-primary", placeholder="") }}
                 {{ form.name.label(for="name") }}
             </div>
+        {% endif %}
             
             {# div info #}
             <p id="info" class="fw-bold text-info mt-3"></p>
@@ -30,7 +32,6 @@
         
         </form>
 
-        <h4 id="user-name">{{user_name}}</h4>
         {# div chat #}
 
         {% if user_name %}
