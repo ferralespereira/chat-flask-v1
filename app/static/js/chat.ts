@@ -22,7 +22,7 @@ socket.on('get user list', function(data:any){
     
     // if are users connected, show all user names in botons except mine
     if ((data.list_users).length > 0 && (data.list_users[0]).length > 0 ){
-        users.innerHTML = 'Users connected: <br>';
+        users.innerHTML = 'Select users to connect: <br>';
     
         for (let user of data.list_users) {
             if (user){
