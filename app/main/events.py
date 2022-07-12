@@ -66,5 +66,6 @@ def text(message):
     room_receive = session.get('room')+'_'+name
 
     emit('message', {
-                'msg': session.get('name') + ': ' + message['msg']
+                'name': session.get('name'), 
+                'msg':  message['msg']
                 }, room=[room_send, room_receive])

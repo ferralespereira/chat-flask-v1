@@ -45,7 +45,9 @@ socket.on('status', function(data:any) {
 
 socket.on('message', function(data:any) {
     let textare_chat:any = document.getElementById('chat');
-    textare_chat.value += '<' + data.msg + '>\n';
+    textare_chat.value += '  '+data.name+':\n';
+    textare_chat.value += '         '+data.msg+'\n';
+    // textare_chat.value += '      ' + data.msg + '\n';
     textare_chat.scrollTop = textare_chat.scrollHeight;
 });
 

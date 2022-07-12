@@ -37,7 +37,9 @@ socket.on('status', function (data) {
 });
 socket.on('message', function (data) {
     var textare_chat = document.getElementById('chat');
-    textare_chat.value += '<' + data.msg + '>\n';
+    textare_chat.value += '  ' + data.name + ':\n';
+    textare_chat.value += '         ' + data.msg + '\n';
+    // textare_chat.value += '      ' + data.msg + '\n';
     textare_chat.scrollTop = textare_chat.scrollHeight;
 });
 function sendText(e) {
