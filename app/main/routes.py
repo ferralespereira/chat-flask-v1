@@ -70,3 +70,8 @@ def left():
     print(session.get('name'))
 
     return redirect(url_for('main.index'))
+
+@main.route('/leave-room', methods=['GET'])
+def leaveRoom():
+    session['room'] = ''
+    return redirect(url_for('main.index'))
