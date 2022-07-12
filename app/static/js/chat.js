@@ -32,7 +32,7 @@ socket.on('get user list', function (data) {
 });
 socket.on('status', function (data) {
     var textare_chat = document.getElementById('chat');
-    textare_chat.value += '<' + data.msg + '>\n';
+    textare_chat.value += '... ' + data.msg + ' ...\n';
     textare_chat.scrollTop = textare_chat.scrollHeight;
 });
 socket.on('message', function (data) {
