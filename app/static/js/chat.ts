@@ -32,7 +32,7 @@ socket.on('get user list', function(data:any){
             }
         }
     }else{
-        users.innerHTML = '<button type="submit" name="room" value="go" class="btn btn-primary rounded-5 m-1">Go</button>';
+        users.innerHTML = '<button type="submit" name="room" value="" class="btn btn-primary rounded-5 m-1">Go</button>';
     }   
 });
     

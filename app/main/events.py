@@ -26,9 +26,10 @@ def joined():
                         'user_room': session.get('room')
                         },broadcast=True)
 
-        emit('status', {
-                'msg':name + ' has entered the room.'
-                }, room=[room_send, room_receive])
+        if session.get('room'):
+            emit('status', {
+                    'msg':name + ' has entered the room.'
+                    }, room=[room_send, room_receive])
 
     # remove list_users 
     del list_users[:]
