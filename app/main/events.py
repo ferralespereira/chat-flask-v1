@@ -28,8 +28,12 @@ def joined():
 
         if session.get('room'):
             emit('status', {
+                    'msg':'YOU' + ' has entered'
+                    }, room=room_send)
+        
+            emit('status', {
                     'msg':name + ' has entered'
-                    }, room=[room_send, room_receive])
+                    }, room=room_receive)
 
     # remove list_users 
     del list_users[:]
@@ -66,6 +70,11 @@ def text(message):
     room_receive = session.get('room')+'_'+name
 
     emit('message', {
-                'name': session.get('name'), 
+                'name': 'YOU', 
                 'msg':  message['msg']
-                }, room=[room_send, room_receive])
+                }, room=room_send)
+    
+    emit('message', {
+            'name': name, 
+            'msg':  message['msg']
+            }, room=room_receive)
