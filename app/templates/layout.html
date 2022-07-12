@@ -17,17 +17,14 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
               <a class="navbar-brand" href="#">Navbar</a>
-              <h4 id="user-name">{{user_name}}</h4>
+              <h4 class="text-info" id="user-name">{{user_name}}</h4>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                  <a class="nav-link" id="home-navBar-link" aria-current="page" href="">Home</a>
-                  <a class="nav-link" id="information-navBar-link" href="">Information</a>
-                  <a class="nav-link" id="contact-navBar-link" href="">Contact</a>
-                  <a class="nav-link" id="cars-navBar-link" href="">Cars</a>
-                  <a class="nav-link" id="create_car-navBar-link" href="">Create Car</a>
+                  {#<a class="nav-link" id="contact-navBar-link" href="">Contact</a>#}
+                  <a class="nav-link active" id="logout" href="/left">Logout</a>
                 </div>
               </div>
             </div>

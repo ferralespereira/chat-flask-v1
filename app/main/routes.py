@@ -61,8 +61,11 @@ def left():
     print('***----------------left GET----------------***')
 
     # remove the 'sesion name' and 'sesion room' (logout the user)
-    session.pop('name')
-    session.pop('room')
+    try:
+        session.pop('name')
+        session.pop('room')
+    except:
+        print('error, the session values must be empty')
 
     print(session.get('name'))
 
